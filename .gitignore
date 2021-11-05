@@ -7,8 +7,8 @@
 !sentinelsat_functions.py
 !sentinelsat_glacier_definitions.py
 !sentinelsat_process_script.py
-!cfl/gimp_total_diss_id_v2.shp
-!cfl/prom_total_man_corr_v2b.dbf
-!cfl/prom_total_man_corr_v2b.prj
-!cfl/prom_total_man_corr_v2b.qpj
-!cfl/prom_total_man_corr_v2b.shx
+prom_total_man_corr_v2b.shp
+prom_total_man_corr_v2b.dbf
+prom_total_man_corr_v2b.prj
+prom_total_man_corr_v2b.qpj
+prom_total_man_corr_v2b.shx
