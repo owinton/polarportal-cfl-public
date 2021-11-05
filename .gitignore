@@ -1,0 +1,14 @@
+# Ignore everything
+*
+
+# But not these files..
+!.gitignore
+!sentinelsat_ftp_script.py
+!sentinelsat_functions.py
+!sentinelsat_glacier_definitions.py
+!sentinelsat_process_script.py
+!cfl/gimp_total_diss_id_v2.shp
+!cfl/prom_total_man_corr_v2b.dbf
+!cfl/prom_total_man_corr_v2b.prj
+!cfl/prom_total_man_corr_v2b.qpj
+!cfl/prom_total_man_corr_v2b.shx
