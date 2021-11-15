@@ -25,8 +25,8 @@ Last modified by oew@geus.dk
 """
 
 # Variables passed to function
-from_date = '20210801'
-to_date = 	'20210805'
+from_date = 'NOW-30DAYS'
+to_date = 	'NOW'
 download_directory = './downloaded_files.nosync'
 unprocessed_image_directory = './unprocessed_images.nosync'
 processed_image_directory = './output_images_to_upload.nosync'
@@ -59,8 +59,8 @@ glacier_list = [
 'Ikertivaq'
 ]
 
-glacier_list = ['Hagen']
-#glacier_list = ['Jakobshavn']
+
+# glacier_list = ['Jakobshavn']
 for glacier in glacier_list:
 	sentinel_process(glacier, from_date, to_date, download_directory, unprocessed_image_directory, processed_image_directory, image_type, n, max_cloud_percentage, download)
 print('Finished processing all glaciers from {} to {}'.format(from_date, to_date))

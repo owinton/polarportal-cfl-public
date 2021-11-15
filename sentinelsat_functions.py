@@ -133,7 +133,7 @@ def make_image(glacier, n, image_list, output_directory, date):
         rasterio.plot.show(tci, transform=blue.window_transform(window), ax=ax)
 
     #%% Reproject and ice extents
-    cflPath1980 = './cfl/prom_total_man_corr_v2b.shp'
+    cflPath1980 = './prom_total_man_corr_v2b.shp'
     cfl1980 = geopandas.read_file(cflPath1980)
     cfl1980 = cfl1980.to_crs(to_crs)
     cfl1980.boundary.plot(ax=ax, color='red', alpha=1, linewidth=1, label='1980')
