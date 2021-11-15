@@ -25,8 +25,8 @@ Last modified by oew@geus.dk
 """
 
 # Variables passed to function
-from_date = '20200801'
-to_date = 	'20200820'
+from_date = '20210801'
+to_date = 	'20210805'
 download_directory = './downloaded_files.nosync'
 unprocessed_image_directory = './unprocessed_images.nosync'
 processed_image_directory = './output_images_to_upload.nosync'
