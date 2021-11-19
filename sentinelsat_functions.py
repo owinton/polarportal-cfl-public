@@ -163,13 +163,17 @@ def make_image(glacier, n, image_list, output_directory, date):
     date_plot = plt.text(minx + scale_displace, miny+scale_displace, '{} glacier, {}'.format(glacier, dateString), fontsize=16)
     date_plot.set_bbox(dict(facecolor='white', alpha=0.8))
 
-    # Save figure and close to clear memory
+    # Save figure (4 figs, 2 sizes and 2 languages. For now both languages use english) and close to clear memory
     outlet_number = glacier_definitions(glacier, 'outlet_number')
-    filename = '{}/Outlet_{}_LA_DK_{}_n_{}'.format(output_directory, outlet_number, date, n)
-    filename_SM = '{}/Outlet_{}_SM_DK_{}'.format(output_directory, outlet_number, date)
+    filename = '{}/Outlet_{}_LA_EN_{}'.format(output_directory, outlet_number, date[:6])
+    filename_SM = '{}/Outlet_{}_SM_EN_{}'.format(output_directory, outlet_number, date[:6])
     fig.savefig(filename, dpi=300, bbox_inches='tight', pad_inches=0)
-    #fig.savefig(filename_SM, dpi=100, bbox_inches='tight', pad_inches=0)
-
+    fig.savefig(filename_SM, dpi=100, bbox_inches='tight', pad_inches=0)
+    filename = '{}/Outlet_{}_LA_DK_{}'.format(output_directory, outlet_number, date[:6])
+    filename_SM = '{}/Outlet_{}_SM_DK_{}'.format(output_directory, outlet_number, date[:6])
+    fig.savefig(filename, dpi=300, bbox_inches='tight', pad_inches=0)
+    fig.savefig(filename_SM, dpi=100, bbox_inches='tight', pad_inches=0)
+    
     plt.close()
 
     del ax, fig, tci # Clear some memory. Not sure if necessary, but it solved run issues on my computer
