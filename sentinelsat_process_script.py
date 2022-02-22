@@ -24,7 +24,7 @@ Last modified by oew@geus.dk
 """
 
 # Variables passed to function
-from_date = 'NOW-130DAYS'
+from_date = 'NOW-1YEAR'
 to_date = 	'NOW'
 download_directory = './downloaded_files.nosync'
 unprocessed_image_directory = './unprocessed_images.nosync'
@@ -34,7 +34,7 @@ processed_image_uploaded_directory = './output_images_uploaded.nosync'
 image_type = ('B02.jp2', 'B03.jp2', 'B04.jp2') # New function makes RGB composites
 n = 2 # root of each band in RGB-composite
 max_cloud_percentage = 20
-download = False;
+download = True;
 upload = True;
 
 glacier_list = [
@@ -61,7 +61,7 @@ glacier_list = [
 ]
 
 
-glacier_list = ['Jakobshavn']
+# glacier_list = ['Jakobshavn']
 for glacier in glacier_list:
 	sentinel_process(glacier, from_date, to_date, download_directory, unprocessed_image_directory, processed_image_directory, image_type, n, max_cloud_percentage, download)
 print('Finished processing all glaciers from {} to {}'.format(from_date, to_date))
