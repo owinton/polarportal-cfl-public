@@ -4,7 +4,7 @@ from zipfile import ZipFile
 from datetime import datetime
 from collections import OrderedDict
 
-from sentinelsat import SentinelAPI
+from sentinelsat import SentinelAPI, make_path_filter
 import matplotlib.pyplot as plt
 import rasterio
 import rasterio.plot
@@ -205,7 +205,7 @@ def sentinel_process(glacier, from_date, to_date, download_directory, unprocesse
     """
 
     if download: # Makes it possible to process without downloading
-        download_sentinel(glacier, from_date, to_date, download_directory, unprocessed_image_directory, max_cloud_percentage)
+        download_sentinel(glacier, from_date, to_date, download_directory, max_cloud_percentage)
 
         ## Unzip downloaded files, get image, delete the rest of the sentinel zip-contents
         unzip_images(download_directory, unprocessed_image_directory, image_type)
@@ -234,7 +234,7 @@ def sentinel_process(glacier, from_date, to_date, download_directory, unprocesse
     print('Finished processing images for {}'.format(glacier))
 
 
-def download_sentinel(glacier, from_date, to_date, download_directory, unprocessed_image_directory, max_cloud_percentage):
+def download_sentinel(glacier, from_date, to_date, download_directory, max_cloud_percentage):
     """
     Downloads Sentinel 2 images from glacier during from_date to to_date to download_directory
     glacier: string containing the glacier name
@@ -273,26 +273,6 @@ def download_sentinel(glacier, from_date, to_date, download_directory, unprocess
                     'cloudcoverpercentage': (0, max_cloud_percentage)
     }
 
-    # Collect products
-    # num_products = 0
-    # products = OrderedDict()
-    # for tile, rel_orbit in tile_relorb_dict.items():
-    #   connection = True
-    #   for orb in rel_orbit:
-    #     kw = query_kwargs.copy()
-    #     kw['tileid'] = tile
-    #     kw['relativeorbitnumber'] = orb
-    #     try: 
-    #       pp = api.query(**kw)
-    #     except api_error: # SciHub servers are known to have outages due to high demand, try again later. TODO: find the appropriate exception for HTTP 500 errors
-    #       print("Cannot connect to server.")
-    #       connection = False
-    #       break
-    #     products.update(pp)
-    #     num_products += api.count(**kw)
-    #   if not connection:
-    #     break
-
     num_products = 0
     products = OrderedDict()
     for tile, rel_orbit in tile_relorb_dict.items():
@@ -304,11 +284,11 @@ def download_sentinel(glacier, from_date, to_date, download_directory, unprocess
             products.update(pp)
             num_products += api.count(**kw)
 
-
+    path_filter = make_path_filter("*_B0[234].jp2")
     if num_products == 0:
         print("No products matches for {}".format(glacier))
     else:
         print("Number of products: {}" .format(num_products))
         # Download collected products
-        api.download_all(products, download_directory)
+        api.download_all(products, download_directory, nodefilter=path_filter)
         print("Finished downloading {} products for {}".format(num_products, glacier))

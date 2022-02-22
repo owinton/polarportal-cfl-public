@@ -61,7 +61,7 @@ glacier_list = [
 ]
 
 
-# glacier_list = ['Jakobshavn']
+glacier_list = ['Jakobshavn']
 for glacier in glacier_list:
 	sentinel_process(glacier, from_date, to_date, download_directory, unprocessed_image_directory, processed_image_directory, image_type, n, max_cloud_percentage, download)
 print('Finished processing all glaciers from {} to {}'.format(from_date, to_date))
