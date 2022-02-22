@@ -1,6 +1,5 @@
 from sentinelsat_functions import sentinel_process
-import os
-
+from sentinelsat_ftp import sentinelsat_ftp_upload
 """
 Script to call the download and processing of images to make calving front images for Polarportal.
 
@@ -25,16 +24,18 @@ Last modified by oew@geus.dk
 """
 
 # Variables passed to function
-from_date = 'NOW-30DAYS'
+from_date = 'NOW-130DAYS'
 to_date = 	'NOW'
 download_directory = './downloaded_files.nosync'
 unprocessed_image_directory = './unprocessed_images.nosync'
 processed_image_directory = './output_images_to_upload.nosync'
+processed_image_uploaded_directory = './output_images_uploaded.nosync'
 #image_type = 'TCI.jp2' # Truecolor images. Can also be any other band in the zip-file
 image_type = ('B02.jp2', 'B03.jp2', 'B04.jp2') # New function makes RGB composites
 n = 2 # root of each band in RGB-composite
 max_cloud_percentage = 20
-download = True;
+download = False;
+upload = True;
 
 glacier_list = [
 'Ryder', 
@@ -60,9 +61,13 @@ glacier_list = [
 ]
 
 
-# glacier_list = ['Jakobshavn']
+glacier_list = ['Jakobshavn']
 for glacier in glacier_list:
 	sentinel_process(glacier, from_date, to_date, download_directory, unprocessed_image_directory, processed_image_directory, image_type, n, max_cloud_percentage, download)
 print('Finished processing all glaciers from {} to {}'.format(from_date, to_date))
+
+if upload:
+	sentinelsat_ftp_upload(processed_image_directory, processed_image_uploaded_directory)
+
 
 
