@@ -24,7 +24,7 @@ Last modified by oew@geus.dk
 """
 
 # Variables passed to function
-from_date = 'NOW-1YEAR'
+from_date = 'NOW-2YEAR'
 to_date = 	'NOW'
 download_directory = './downloaded_files.nosync'
 unprocessed_image_directory = './unprocessed_images.nosync'

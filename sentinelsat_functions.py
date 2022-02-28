@@ -290,5 +290,6 @@ def download_sentinel(glacier, from_date, to_date, download_directory, max_cloud
     else:
         print("Number of products: {}" .format(num_products))
         # Download collected products
-        api.download_all(products, download_directory, nodefilter=path_filter)
+        # api.download_all(products, download_directory, nodefilter=path_filter)
+        api.download_all(products, download_directory)
         print("Finished downloading {} products for {}".format(num_products, glacier))
