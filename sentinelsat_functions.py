@@ -206,9 +206,9 @@ def sentinel_process(glacier, from_date, to_date, download_directory, unprocesse
 
     if download: # Makes it possible to process without downloading
         download_sentinel(glacier, from_date, to_date, download_directory, max_cloud_percentage)
-
-        ## Unzip downloaded files, get image, delete the rest of the sentinel zip-contents
-        unzip_images(download_directory, unprocessed_image_directory, image_type)
+        
+    ## Unzip downloaded files, get image, delete the rest of the sentinel zip-contents
+    unzip_images(download_directory, unprocessed_image_directory, image_type)
 
     ## Make image from each set of tiles from same time
     # Get all image files
