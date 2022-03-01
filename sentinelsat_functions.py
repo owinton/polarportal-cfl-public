@@ -132,7 +132,8 @@ def make_image(glacier, n, image_list, output_directory, date):
             norm_max = tci.max(axis=(0,1,2), keepdims=True) # axis=(1,2) normalizes each channel independently
         # Shift and stretch bands to be in [0,1]
         tci = tci - norm_min
-        tci = tci/norm_max
+        if norm_max != 0:
+            tci = tci/norm_max
 
         # Plot with rasterio, using the transform of the raster
         rasterio.plot.show(tci, transform=blue.window_transform(window), ax=ax)
@@ -170,8 +171,8 @@ def make_image(glacier, n, image_list, output_directory, date):
 
     # Save figure (2 sizes) and close to clear memory
     outlet_number = glacier_definitions(glacier, 'outlet_number')
-    filename = '{}/Outlet_{}_LA_DK_{}'.format(output_directory, outlet_number, date[:6])
-    filename_SM = '{}/Outlet_{}_SM_DK_{}'.format(output_directory, outlet_number, date[:6])
+    filename = '{}/Outlet_{}_LA_DK_{}'.format(output_directory, outlet_number, date[:8])
+    filename_SM = '{}/Outlet_{}_SM_DK_{}'.format(output_directory, outlet_number, date[:8])
     #fig.savefig(filename, dpi=300, bbox_inches='tight', pad_inches=0)
     fig.tight_layout(pad=0)
     fig.savefig(filename_SM, dpi=100)
@@ -206,7 +207,7 @@ def sentinel_process(glacier, from_date, to_date, download_directory, unprocesse
 
     if download: # Makes it possible to process without downloading
         download_sentinel(glacier, from_date, to_date, download_directory, max_cloud_percentage)
-        
+
     ## Unzip downloaded files, get image, delete the rest of the sentinel zip-contents
     unzip_images(download_directory, unprocessed_image_directory, image_type)
 

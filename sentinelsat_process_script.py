@@ -34,8 +34,8 @@ processed_image_uploaded_directory = './output_images_uploaded.nosync'
 image_type = ('B02.jp2', 'B03.jp2', 'B04.jp2') # New function makes RGB composites
 n = 2 # root of each band in RGB-composite
 max_cloud_percentage = 20
-download = True;
-upload = True;
+download = False;
+upload = False;
 
 glacier_list = [
 'Ryder', 
