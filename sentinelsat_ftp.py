@@ -3,8 +3,15 @@ import os
 import shutil
 
 """
+Script to upload plots to DMI server. Uploads files from
+str: output_plots_to_upload
+Moves files to
+str: output_plots_uploaded
+
+Requires username and password for DMI ftp server stores as line 3 and 4 in ../username_password.txt
+
 Created by kaha on 25 Jun 2018
-Last edited by oew on 10 Mar 2021
+Modified by oew on 10 Mar 2021
 """
 def sentinelsat_ftp_upload(output_plots_to_upload, output_plots_uploaded):
     ftp = ftplib.FTP('ftpserver.dmi.dk')

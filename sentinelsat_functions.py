@@ -86,8 +86,6 @@ def make_image(glacier, n, image_list, output_directory, date):
     Created by oew@geus.dk
     27 Jan 2021
 
-    Last modified by oew@geus.dk
-    7 Apr 2021
     """
 
     
@@ -200,8 +198,6 @@ def sentinel_process(glacier, from_date, to_date, download_directory, unprocesse
     Created by oew@geus.dk
     3 Feb 2021
 
-    Last modified by oew@geus.dk
-    24 Mar 2021
 
     """
 
@@ -248,8 +244,6 @@ def download_sentinel(glacier, from_date, to_date, download_directory, max_cloud
     Created by oew@geus.dk
     27 Jan 2021
 
-    Last modified by oew@geus.dk
-    10 Feb 2021
     """
 
     # User credentials to the Copernicus SciHub

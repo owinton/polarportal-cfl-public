@@ -19,8 +19,6 @@ glacier_list: list of glaciers to download and process images for
 Created by oew@geus.dk
 3 Feb 2021
 
-Last modified by oew@geus.dk
-3 Mar 2021
 """
 
 # Variables passed to function

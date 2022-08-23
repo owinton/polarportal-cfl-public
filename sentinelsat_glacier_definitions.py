@@ -16,8 +16,7 @@ def glacier_definitions(glacier, output):
     Created by oew@geus.dk
     1 Feb 2021
 
-    Modified by oew@geus.dk
-    3 Mar 2021
+
     """
     bounding_box = None
     tile_relorb_dict = None
